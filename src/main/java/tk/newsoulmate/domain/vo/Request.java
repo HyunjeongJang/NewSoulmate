@@ -1,13 +1,27 @@
 package tk.newsoulmate.domain.vo;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
 public class Request {
-    private String serviceKey;
+    private static String serviceKey;
+    {
+        String FilePath=Request.class.getResource("/key/APIkey.xml").getPath();
+        Properties prop=new Properties();
+        try {
+            prop.loadFromXML(new FileInputStream("FilePath") );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        serviceKey=prop.getProperty("NoticeKey");
+    }
     private Date bgndate;///*유기날짜(검색 시작일) (YYYYMMDD)*/
     private Date enddate; //*유기날짜(검색 종료일) (YYYYMMDD)*/
     private Species species;/*축종코드 (개 : 417000, 고양이 : 422400, 기타 : 429900)*/
@@ -147,7 +161,7 @@ public class Request {
         URL url;
         try {
             urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") +
-                    "=OhUlln8q1KPlVbRKb81vjzEzQ%2FvN4L5FIwTc%2F5vIB3ViAeVOooZ0oG8VTmLM59sKxVKygpFeT1YTu4azfMRyCw%3D%3D"); /*Service Key*/
+                    "="); /*Service Key*/
             if (bgndate != null) {
                 urlBuilder.append("&" + URLEncoder.encode("bgnde", "UTF-8") + "=" +
                         URLEncoder.encode(urlDate.format(bgndate), "UTF-8"));

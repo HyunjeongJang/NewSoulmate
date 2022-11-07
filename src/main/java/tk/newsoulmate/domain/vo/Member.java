@@ -10,7 +10,7 @@ public class Member {
     private String Phone;//전화번호
     private String Email;//이메일
     private String nickName;//닉네임
-    private MemberGreed memberGreed;//유저등급
+    private MemberGrade memberGrade;//유저등급
     private long shelterNo;
     private Date resentConnection;//최근접속일
     private Date enrollDate;
@@ -74,12 +74,12 @@ public class Member {
         this.nickName = nickName;
     }
 
-    public MemberGreed getMemberGreed() {
-        return memberGreed;
+    public MemberGrade getMemberGrade() {
+        return memberGrade;
     }
 
-    public void setMemberGreed(MemberGreed memberGreed) {
-        this.memberGreed = memberGreed;
+    public void setMemberGrade(MemberGrade memberGrade) {
+        this.memberGrade = memberGrade;
     }
 
     public long getShelterNo() {

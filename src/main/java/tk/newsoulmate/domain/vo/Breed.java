@@ -5,8 +5,6 @@ public class Breed {
     private long breedNo;
     private String breedName;
 
-
-
     public Breed(Species species_name, long breedNo, String breedName) {
         Species_name = species_name;
         this.breedNo = breedNo;

@@ -28,3 +28,4 @@ target/
 ### Mac OS ###
 .DS_Store
 /src/main/resources/key/
+/src/main/resources/key/APIKey.xml

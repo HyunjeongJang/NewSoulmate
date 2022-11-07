@@ -1,5 +1,7 @@
 package tk.newsoulmate.domain.vo;
 
+import java.time.Clock;
+
 public class City {
     private long cityNo;
     private String cityName;

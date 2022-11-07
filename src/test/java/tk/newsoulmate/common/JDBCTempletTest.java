@@ -2,7 +2,8 @@ package tk.newsoulmate.common;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import tk.newsoulmate.member.Member;
+import tk.newsoulmate.domain.vo.Member;
+import tk.newsoulmate.web.common.JDBCTemplet;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,13 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class JDBCTempletTest {
 
     @Test
     void getConnection() {
-        Connection connection=JDBCTemplet.getConnection();
+        Connection connection= JDBCTemplet.getConnection();
         String sql="SELECT * FROM MEMBER";
         ArrayList<Member> list=new ArrayList<>();
 

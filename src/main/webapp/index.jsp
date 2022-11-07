@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="kr">
 <body>
+<%--메인페이지 서블릿으로 이동--%>
+<jsp:forward page="<%=request.getContextPath()%>Main"/>
 
-<h2>Hello World!</h2>
 
-<a href="/test.do">응가</a>
 
 </body>
 </html>

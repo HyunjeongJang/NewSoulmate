@@ -1,4 +1,4 @@
-package tk.newsoulmate.common;
+package tk.newsoulmate.web.common;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -34,8 +34,6 @@ public class JDBCTemplet{
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
     }
 
     //3. 전달받은 Connection 객체를 가지고 RollBack해주는 메소드

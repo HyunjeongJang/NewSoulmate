@@ -1,4 +1,6 @@
 package tk.newsoulmate.domain.vo;
+import tk.newsoulmate.web.common.APIKeys;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,17 +13,8 @@ import java.util.Date;
 import java.util.Properties;
 
 public class Request {
-    private static String serviceKey;
-    {
-        String FilePath=Request.class.getResource("/key/APIkey.xml").getPath();
-        Properties prop=new Properties();
-        try {
-            prop.loadFromXML(new FileInputStream("FilePath") );
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        serviceKey=prop.getProperty("NoticeKey");
-    }
+    private String serviceKey;
+
     private Date bgndate;///*유기날짜(검색 시작일) (YYYYMMDD)*/
     private Date enddate; //*유기날짜(검색 종료일) (YYYYMMDD)*/
     private Species species;/*축종코드 (개 : 417000, 고양이 : 422400, 기타 : 429900)*/
@@ -41,6 +34,7 @@ public class Request {
     }
 
     public Request() {
+        serviceKey= APIKeys.NoticeKey;
         this._type = "JSON";
     }
 
@@ -160,8 +154,7 @@ public class Request {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic"); /*URL*/
         URL url;
         try {
-            urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") +
-                    "="); /*Service Key*/
+            urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") +"="+URLEncoder.encode(serviceKey,"UTF-8")); /*Service Key*/
             if (bgndate != null) {
                 urlBuilder.append("&" + URLEncoder.encode("bgnde", "UTF-8") + "=" +
                         URLEncoder.encode(urlDate.format(bgndate), "UTF-8"));

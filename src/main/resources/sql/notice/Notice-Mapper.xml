@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <!--API키는 이파일에서 관리할것!-->
 <properties>
-    <entry key="trunkNotice">
+    <entry key="truncNotice">
         TRUNCATE TABLE ANIMAL
     </entry>
     <entry key="insertNotice">

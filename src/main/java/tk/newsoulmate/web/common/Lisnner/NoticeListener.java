@@ -1,5 +1,7 @@
 package tk.newsoulmate.web.common.Lisnner;
 
+import tk.newsoulmate.web.common.APIKeys;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -12,7 +14,8 @@ public class NoticeListener implements ServletContextListener, HttpSessionListen
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        /* This method is called when the servlet context is initialized(when the Web application is deployed). */
+      new APIKeys();
+
     }
 
     @Override

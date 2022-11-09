@@ -10,7 +10,11 @@ import java.util.Properties;
  * ApiKey
  */
 public  class APIKeys {
-    public static Properties prop;
+    public static Properties prop;{
+
+
+
+    }
     public static String NoticeKey;
     public APIKeys(){
         if(prop==null){

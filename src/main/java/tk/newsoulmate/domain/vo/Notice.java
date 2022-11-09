@@ -1,6 +1,8 @@
 package tk.newsoulmate.domain.vo;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Notice{
     private long desertionNo;
@@ -50,7 +52,6 @@ public class Notice{
     public void setHappenDt(Date happenDt) {
         this.happenDt = happenDt;
     }
-
     public String getHappenPlace() {
         return happenPlace;
     }
@@ -107,6 +108,7 @@ public class Notice{
         this.noticeSdt = noticeSdt;
     }
 
+
     public Date getNoticeEdt() {
         return noticeEdt;
     }
@@ -114,6 +116,7 @@ public class Notice{
     public void setNoticeEdt(Date noticeEdt) {
         this.noticeEdt = noticeEdt;
     }
+
 
     public String getPopfile() {
         return popfile;

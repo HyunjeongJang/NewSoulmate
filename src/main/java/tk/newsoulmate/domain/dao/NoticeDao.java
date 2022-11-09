@@ -1,6 +1,7 @@
 package tk.newsoulmate.domain.dao;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import tk.newsoulmate.domain.vo.Notice;
 import tk.newsoulmate.domain.vo.Request;
 import tk.newsoulmate.domain.vo.response.Body;
@@ -22,7 +23,7 @@ public class NoticeDao {
 
     private static Properties prop=new Properties();
     public NoticeDao(){
-        Properties prop=new Properties();
+        
         String FilePath=NoticeDao.class.getResource("/sql/notice/Notice-Mapper.xml").getPath();
         try {
             prop.loadFromXML(new FileInputStream(FilePath));
@@ -72,7 +73,9 @@ public class NoticeDao {
         Request request=new Request();
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE,  -14);
+
         request.setBgndate(cal.getTime());
+        System.out.println(request.getBgndate());
         request.setPageNo(1);
         request.setNumberOfRows(numberOfRows);
         URL url = request.toUrl();
@@ -86,7 +89,7 @@ public class NoticeDao {
             httpConn.setRequestMethod("GET");
             httpConn.setRequestProperty("Content-type", "application/json");
             if(httpConn.getResponseCode()>=200&&httpConn.getResponseCode()<=300){
-                Gson gson=new Gson();
+                Gson gson= new GsonBuilder().setDateFormat("yyyyMMdd").create();
                 responseMapper = gson.fromJson(new InputStreamReader(httpConn.getInputStream(),"UTF-8"), ResponseMapper.class);
                 Response r =responseMapper.getResponse();
                 Body b=r.getBody();
@@ -100,9 +103,10 @@ public class NoticeDao {
         System.out.println("결과수 : "+length);
         PreparedStatement trunkPsmt=null;
         PreparedStatement insertPsmt=null;
-        String trunk=prop.getProperty("trunkNotice");
-        String insert=prop.getProperty("InsertNotice");
+        String trunk=prop.getProperty("truncNotice");
+        String insert=prop.getProperty("insertNotice");
         int result=0;
+
         try {
             trunkPsmt=conn.prepareStatement(trunk);
             result=trunkPsmt.executeUpdate();

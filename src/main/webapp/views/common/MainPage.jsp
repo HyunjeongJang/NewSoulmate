@@ -6,16 +6,26 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta >
+    <title>메인화면-환승주인</title>
+
+</head>
+<body>
+
+</body>
 </html>
 <!doctype html>
 <html lang="ko">
 <head>
     <meta charset="utf-8">
-    <title>환승주인</title>
-<%--    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>--%>
-<%--    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>--%>
-<%--    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />--%>
-<%--    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />--%>
+    <title>Slick</title>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <style>
         img {
             max-height: 150px;
@@ -35,10 +45,8 @@
         }
     </style>
 </head>
-<header> <%@include file="/views/template/menubar.jsp"%> </header>
-
 <body>
-
+    <header> <%@include file="/views/template/menubar.jsp"%> </header>
 <script>
     $( document ).ready( function() {
         $( '.slider' ).slick( {
@@ -54,12 +62,13 @@
     <div class="slider">
         <div><img src="" alt="">사진1</div>
         <div><img src="" alt="">사진2</div>
-        <div><img src="" alt="">꽃사진3</div>
-        <div><img src="" alt="">꽃사진4</div>
-        <div><img src="" alt="">꽃사진5</div>
-        <div><img src="" alt="">보노보노</div>
+        <div><img src="image/flower3.jpg" alt="">꽃사진3</div>
+        <div><img src="image/flower4.jpg" alt="">꽃사진4</div>
+        <div><img src="image/flower5.jpg" alt="">꽃사진5</div>
+        <div><img src="image/bono.jpg" alt="">보노보노</div>
     </div>
 </main>
+    <footer><%@include file="/views/template/footer.jsp"%></footer>
 </body>
-<footer><%@include file="/views/template/footer.jsp"%></footer>
+
 </html>

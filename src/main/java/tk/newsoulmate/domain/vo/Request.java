@@ -1,16 +1,12 @@
 package tk.newsoulmate.domain.vo;
 import tk.newsoulmate.web.common.APIKeys;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
 
 public class Request {
     private String serviceKey;
@@ -34,8 +30,11 @@ public class Request {
     }
 
     public Request() {
-        serviceKey= APIKeys.NoticeKey;
+        new APIKeys();
+        this.serviceKey= APIKeys.NoticeKey;
         this._type = "JSON";
+        this.pageNo=1;
+        this.numberOfRows=1;
     }
 
     public String getServiceKey() {
@@ -154,7 +153,7 @@ public class Request {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic"); /*URL*/
         URL url;
         try {
-            urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") +"="+URLEncoder.encode(serviceKey,"UTF-8")); /*Service Key*/
+            urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") +"="+serviceKey); /*Service Key*/
             if (bgndate != null) {
                 urlBuilder.append("&" + URLEncoder.encode("bgnde", "UTF-8") + "=" +
                         URLEncoder.encode(urlDate.format(bgndate), "UTF-8"));
@@ -192,15 +191,18 @@ public class Request {
                 urlBuilder.append("&" + URLEncoder.encode("neuter_yn", "UTF-8") + "=" +
                         URLEncoder.encode(neuter, "UTF-8"));
             }
-            urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" +
-                    URLEncoder.encode(String.valueOf(pageNo), "UTF-8"));
+            if(pageNo!=null) {
+                urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" +
+                        URLEncoder.encode(String.valueOf(pageNo), "UTF-8"));
+            }
+            if(numberOfRows!=null){
             urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" +
-                    URLEncoder.encode(String.valueOf(numberOfRows), "UTF-8"));
+                    URLEncoder.encode(String.valueOf(numberOfRows), "UTF-8"));}
             urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
             url=new URL(urlBuilder.toString());
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
         } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
         return url;

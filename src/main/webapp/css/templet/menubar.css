@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    background-color: #f8f5f2;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+
+.headcontainer {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+}
+
+.navbar_logo {
+    text-align : center;
+}
+
+
+
+
+#user {
+    width: 1187px;
+    height: 20px;
+    text-align : center;
+}
+
+.navdiv ul {
+    list-style: none;
+}
+
+.navdiv li {
+    float: right;
+    width: 100px;
+}
+
+
+
+
+
+
+.navbar_menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.navbar_menu li {
+    padding: 8px 12px;
+}
+
+.navbar_menu li:hover{
+    background-color: #f45d48;
+    border-radius: 4px;
+}
+
+
+.navbar_toogleBtn {
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+    color: #d49466
+}
+
+.saveanimal{
+    width: 420px;
+    padding : 10px;
+    font-size: 18px;
+    color : #fff;
+    border: none;
+    cursor: pointer;
+    background-color: #f45d48;
+}
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-btn {
+    font-weight: bold;
+    width: 150px;
+    padding : 10px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    background-color: #f8f5f2;
+}
+
+.dropdown-submenu{
+    width:150px;
+    display: none;
+}
+
+.dropdown-submenu a {
+    display: block;
+    padding: 7px;
+    text-align: center;
+}
+
+.dropdown-btn a:hover{
+    color:  #f45d48;
+}
+
+.dropdown-submenu a:hover{
+    color: #319493;
+}
+
+.dropdown:hover .dropdown-submenu {
+    display: block;
+}

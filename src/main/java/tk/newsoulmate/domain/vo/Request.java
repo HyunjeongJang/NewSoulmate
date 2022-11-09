@@ -34,6 +34,7 @@ public class Request {
     }
 
     public Request() {
+        new APIKeys();
         this.serviceKey= APIKeys.NoticeKey;
         this._type = "JSON";
         this.pageNo=1;
@@ -203,10 +204,9 @@ public class Request {
                     URLEncoder.encode(String.valueOf(numberOfRows), "UTF-8"));}
             urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
             url=new URL(urlBuilder.toString());
-
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
         } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
         return url;

@@ -9,17 +9,19 @@ import java.util.Properties;
 /**
  * ApiKey
  */
-public class APIKeys {
-    public static Properties prop;{
-        String FilePath= Request.class.getResource("/key/APIkey.xml").getPath();
-        this.prop=new Properties();
-        try {
-            prop.loadFromXML(new FileInputStream(FilePath) );
-        } catch (
-                IOException e) {
-            throw new RuntimeException(e);
+public  class APIKeys {
+    public static Properties prop;
+    public static String NoticeKey;
+    public APIKeys(){
+        if(prop==null){
+            String FilePath= APIKeys.class.getResource("/key/APIkey.xml").getPath();
+            this.prop=new Properties();
+            try {
+                prop.loadFromXML(new FileInputStream(FilePath) );
+                this.NoticeKey=prop.getProperty("NoticeKey");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
-    public static String NoticeKey=prop.getProperty("NoticeKey");
-
 }

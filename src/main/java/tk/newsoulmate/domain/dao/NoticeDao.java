@@ -1,10 +1,9 @@
 package tk.newsoulmate.domain.dao;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import tk.newsoulmate.domain.vo.Notice;
 import tk.newsoulmate.domain.vo.Request;
-import tk.newsoulmate.domain.vo.ResponseMapper;
+import tk.newsoulmate.domain.vo.response.ResponseMapper;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,7 +13,6 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class NoticeDao {
@@ -22,7 +20,7 @@ public class NoticeDao {
     private static Properties prop=new Properties();
     public NoticeDao(){
         Properties prop=new Properties();
-        String FilePath= Request.class.getResource("/sql/Notice/Notice-Mapper.xml").getPath();
+        String FilePath=NoticeDao.class.getResource("/sql/notice/Notice-Mapper.xml").getPath();
         try {
             prop.loadFromXML(new FileInputStream(FilePath));
         } catch (IOException e) {
@@ -41,7 +39,6 @@ public class NoticeDao {
         Map<Long, String> map = new HashMap<>(20);
         URL url = request.toUrl();
         ResponseMapper responseMapper=null;
-
         try {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -68,13 +65,13 @@ public class NoticeDao {
 //    }
 
 
-    public int scrapNotice(Connection conn){
+    public int scrapNotice(Connection conn,int numberOfRows){
         Request request=new Request();
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE,  -14);
         request.setBgndate(cal.getTime());
         request.setPageNo(1);
-        request.setNumberOfRows(500);
+        request.setNumberOfRows(numberOfRows);
         URL url = request.toUrl();
         ResponseMapper responseMapper=null;
         List<Notice> Nlist=new ArrayList<>();
@@ -93,7 +90,7 @@ public class NoticeDao {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        System.out.println("결과수 : "+length);
         PreparedStatement trunkPsmt=null;
         PreparedStatement insertPsmt=null;
         String trunk=prop.getProperty("trunkNotice");
@@ -116,25 +113,26 @@ public class NoticeDao {
                     insertPsmt.setString(9,n.getNoticeNo());
                     insertPsmt.setDate(10,n.getNoticeSdt());
                     insertPsmt.setDate(11,n.getNoticeEdt());
-                    insertPsmt.setString(12,n.getColorCd());
-                    insertPsmt.setString(13,n.getPopfile());
-                    insertPsmt.setString(14,n.getProcessState());
-                    insertPsmt.setString(15,n.getSexCd());
-                    insertPsmt.setString(16,n.getNeuterYn());
-                    insertPsmt.setString(17,n.getSpecialMark());
-                    insertPsmt.setString(18,n.getCareNm());
-                    insertPsmt.setString(19,n.getCareTel());
-                    insertPsmt.setString(20,n.getCareAddr());
-                    insertPsmt.setString(21,n.getOrgNm());
-                    insertPsmt.setString(22,n.getChargeNm());
-                    insertPsmt.setString(23,n.getOfficetel());
-                    insertPsmt.setString(24,n.getNoticeComment());
+                    insertPsmt.setString(12,n.getPopfile());
+                    insertPsmt.setString(13,n.getProcessState());
+                    insertPsmt.setString(14,n.getSexCd());
+                    insertPsmt.setString(15,n.getNeuterYn());
+                    insertPsmt.setString(16,n.getSpecialMark());
+                    insertPsmt.setString(17,n.getCareNm());
+                    insertPsmt.setString(18,n.getCareTel());
+                    insertPsmt.setString(19,n.getCareAddr());
+                    insertPsmt.setString(20,n.getOrgNm());
+                    insertPsmt.setString(21,n.getChargeNm());
+                    insertPsmt.setString(22,n.getOfficetel());
+                    insertPsmt.setString(23,n.getNoticeComment());
+                    result+=insertPsmt.executeUpdate();
+                    System.out.println(result);
                 }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+        return result;
 
 
     }

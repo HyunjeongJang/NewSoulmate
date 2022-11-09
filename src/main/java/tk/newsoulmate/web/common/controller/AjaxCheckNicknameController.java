@@ -14,8 +14,6 @@ public class AjaxCheckNicknameController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setCharacterEncoding("utf-8");
-
         String nickName = request.getParameter("nickName");
 
         MemberService service = new MemberService();

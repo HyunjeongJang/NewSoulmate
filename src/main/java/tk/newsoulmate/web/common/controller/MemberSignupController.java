@@ -13,8 +13,6 @@ public class MemberSignupController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setCharacterEncoding("utf-8");
-
         String memberId = request.getParameter("memberId");
         String memberPwd = request.getParameter("memberPwd");
         String memberName = request.getParameter("memberName");

@@ -8,13 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>회원가입 약관동의</title>
+    <title>회원가입 약관</title>
 </head>
 <body>
 
 <%@include file="/views/templet/menubar.jsp"%>
 
-<div align="center">
+<div>
     <div>
         <div>
             <h2>회원가입</h2>
@@ -51,12 +51,13 @@
 
 
             <div>
-                <button class="btn2 agreeBtn cancelBtn"><a href="MainPage.jsp">취소</a></button>
-                <button class="btn2 agreeBtn nextBtn"><a href="memberSignupForm.jsp">가입하기</a></button>
+                <button id="cancelBtn"><a href="MainPage.jsp">취소</a></button>
+                <button id="signupBtn"><a href="memberSignupForm.jsp">가입하기</a></button>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <%@include file="/views/templet/footer.jsp"%>
@@ -86,6 +87,28 @@
             }
         });
     });
+
+
+
+
+/*    // 체크박스 선택이 됐을때만 회원가입 버튼 활성화
+    $("#signupBtn").on("click", function() {
+        if (idx == 1) {
+            if ($("input:checkbox[name = agreeCheckBox]").is(":checked") == true) {
+                for (let i = 0; i < idx; i++) {
+                    $("#signupBtn").eq(i).disable();
+                }
+                $("#signupBtn").eq(idx).show();
+            } else {
+
+            }
+
+        }
+    });*/
+
+
+
+
 
 </script>
 

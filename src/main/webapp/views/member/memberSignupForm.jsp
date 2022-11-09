@@ -31,7 +31,7 @@
                 <div>
                     <div>
                         <label for="memberPw">비밀번호</label>
-                        <input type="password" name="memberPw" id="memberPw" placeholder="*비밀번호">
+                        <input type="password" name="memberPwd" id="memberPw" placeholder="*비밀번호">
                         <span id="pwChkMsg"></span>
                     </div>
                 </div>
@@ -66,6 +66,7 @@
                             <option value="010">010</option>
                             <option value="011">011</option>
                             <option value="016">016</option>
+                            <option value="016">017</option>
                             <option value="019">019</option>
                         </select>
                         <input type="text" name="memberPhone" id="memberPhone" placeholder="-빼고 입력">
@@ -133,11 +134,9 @@
 
                     if (data == "1") {
                         idChkMsg.alert("이미 사용중인 아이디 입니다.");
-                        /*idChkMsg.innerText = "이미 사용중인 아이디 입니다."*/
                         checkId = 0;
                     } else if (data == "0") {
                         idChkMsg.alert("사용 가능한 아이디 입니다.");
-                        /*idChkMsg.innerText = "사용가능한 아이디 입니다."*/
                         checkId = 1;
                     }
                 }
@@ -196,10 +195,10 @@
         const inputPwRe = memberPwRe.value;
         const pwReChkMsg = document.querySelector("#pwReChkMsg");
         if (pwReg.test(inputPw)) {
-            pwChkMsg.innerText = "사용 가능한 비밀번호 입니다"
+            pwChkMsg.innerText = "사용 가능한 비밀번호 입니다."
             checkPwd = 1;
         } else {
-            pwChkMsg.innerText = "사용 불가능한 비밀번호 입니다. 다시 입력해주세요."
+            pwChkMsg.innerText = "사용 불가능한 비밀번호 입니다."
             checkPwd = 0;
         }
         if(inputPwRe != ""){

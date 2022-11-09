@@ -13,8 +13,6 @@ public class EmailVerificationController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setCharacterEncoding("utf-8");
-
         String email = request.getParameter("memberMail");
 
         MemberService service = new MemberService();

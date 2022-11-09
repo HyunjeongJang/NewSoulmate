@@ -39,7 +39,7 @@ public class MemberDao {
         String sql = prop.getProperty("insertMember");
 
         try {
-            psmt = conn.prepareStatement(sql); // 변수가 필요한 공간에 ?로 채워져 있는 미완성된 객체라 완성시켜줘야함
+            psmt = conn.prepareStatement(sql);
 
             psmt.setString(1, m.getMemberId());
             psmt.setString(2, m.getMemberPwd());
@@ -144,14 +144,12 @@ public class MemberDao {
 
         MimeMessage msg = new MimeMessage(session);
 
-
-
         try {
 
             msg.setSentDate(new Date());
             msg.setFrom(new InternetAddress("newsoulmate@gamil.com", "환승주인"));
 
-            // 받는사람 정보
+            // 받는사람
             InternetAddress to = new InternetAddress(email);
             msg.setRecipient(Message.RecipientType.TO, to);
 

@@ -13,6 +13,8 @@ public class Board {
     private String memberName;
     private Date createDate;
     private Date issueDate;
+
+    private String resultStatus;
     private Board(){}
     /*
         새로운 생성자가 필요할시 생성자를 호출하게 하지말고 펙토리얼메소드를 호출하도록 작성할것
@@ -53,22 +55,34 @@ public class Board {
         return b;
     }
 
+    public String getResultStatus() {
+        return resultStatus;
+    }
+
+    public void setResultStatus(String resultStatus) {
+        this.resultStatus = resultStatus;
+    }
+
     /**
-     *  QnA FnA 리스트용 펙토리얼메소드
+     *  QnA 리스트용 펙토리얼메소드
+     * @param resultStatus
      * @param boardNo
      * @param boardTitle
      * @param createDate
-     * @param readCount
+     * @param memberName
      * @return
      */
-    public static Board selectList(int boardNo,String boardTitle,Date createDate,int readCount){
+    public static Board selectQnAList(String resultStatus,int boardNo,String boardTitle,Date createDate,String memberName){
         Board b=new Board();
-        b.setBoardTitle(boardTitle);
+        b.setResultStatus(resultStatus);
         b.setBoardNo(boardNo);
+        b.setBoardTitle(boardTitle);
         b.setCreateDate(createDate);
-        b.setReadCount(readCount);
+        b.setMemberName(memberName);
         return b;
     }
+
+
 
     /**
      * DB에서 입양후기리스트,봉사후기리스트를 불러오기 위한 생성함수

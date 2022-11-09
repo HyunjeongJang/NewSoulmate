@@ -25,6 +25,23 @@ public class JDBCTemplet{
         }
         return conn;
     }
+    public static Connection getTestConnection(){
+        //getResource메소드의 맨처음 /는 classes폴더를 의미한다.
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        if(conn==null){
+            try {
+                conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","NEWSOULMATE","NEWSOULMATE");
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        };
+
+        return conn;
+    }
     //2. 전달받은 Connection 객체를 가지고 Commit 해주는 메소드
     public static void commit(){
         try{

@@ -1,4 +1,4 @@
-package tk.newsoulmate.web.member.controller;
+package tk.newsoulmate.web.common.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

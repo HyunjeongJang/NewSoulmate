@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html lang="kr">
 <body>
-<jsp:forward page="/Main"/>
+
+    <jsp:forward page="/Main"/>
 
 
 </body>

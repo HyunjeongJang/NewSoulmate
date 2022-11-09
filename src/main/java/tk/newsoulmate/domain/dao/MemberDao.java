@@ -12,7 +12,7 @@ public class MemberDao {
     private Properties prop = new Properties();
 
     public MemberDao() {
-        String fileName = MemberDao.class.getResource("/sql/member/member-mapper.xml").getPath();
+        String fileName = MemberDao.class.getResource("/sql/member/Member-Mapper.xml").getPath();
 
         try {
             prop.loadFromXML(new FileInputStream(fileName));

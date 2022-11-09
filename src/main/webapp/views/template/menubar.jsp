@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>Title</title>
-<%--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>--%>
-<%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">--%>
-    <link rel="stylesheet" href="../../css/template/menubar.css">
-<%--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>--%>
-<%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/template/menubar.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
             <p> </p>
         </div>
         <div class="navbar_logo">
-            <a href="#"><img src="../../image/logo.png"></a>
+            <a href="#"><img src="<%=request.getContextPath()%>/image/logo.png"></a>
         </div>
         <div id="user">
             <ul>

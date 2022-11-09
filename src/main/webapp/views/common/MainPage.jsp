@@ -35,7 +35,7 @@
         }
     </style>
 </head>
-<header> <%@include file="/views/templet/menubar.jsp"%> </header>
+<header> <%@include file="/views/template/menubar.jsp"%> </header>
 
 <body>
 
@@ -61,5 +61,5 @@
     </div>
 </main>
 </body>
-<footer><%@include file="/views/templet/footer.jsp"%></footer>
+<footer><%@include file="/views/template/footer.jsp"%></footer>
 </html>

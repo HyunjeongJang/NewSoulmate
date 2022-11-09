@@ -2,13 +2,13 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../../css/template/footer.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/template/footer.css">
 </head>
 <body>
 <div class="footer_all">
     <div id="footer_box">
         <div id="footer_logo">
-            <a href="#"><img src="../../image/logo.png"></a>
+            <a href="#"><img src="<%=request.getContextPath()%>/image/logo.png"></a>
         </div>
         <div id="address">
             <ul>

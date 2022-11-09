@@ -14,8 +14,8 @@
 
 <%@include file="/views/templet/menubar.jsp"%>
 
-<div class="signup-content">
-    <div class="center-move">
+<div class="signupForm">
+    <div>
 
         <div>
             <form action="/signup.do" method="post">
@@ -103,13 +103,14 @@
 
 <%@include file="/views/templet/footer.jsp"%>
 
-<%--<script src="/js.common/memberSignupForm.js"></script>--%>
+<%--<script src="webapp/js/memberSignupForm.js"></script>--%>
 
 <script>
 
     let checkId = 0;
     let checkPwd = 0;
     let checkPwdRe = 0;
+    let checkNickname = 0;
     let checkPhone = 0;
     let checkMail = 0;
 
@@ -131,10 +132,12 @@
                 success: function(data) {
 
                     if (data == "1") {
-                        idChkMsg.innerText = "이미 사용중인 아이디 입니다."
+                        idChkMsg.alert("이미 사용중인 아이디 입니다.");
+                        /*idChkMsg.innerText = "이미 사용중인 아이디 입니다."*/
                         checkId = 0;
                     } else if (data == "0") {
-                        idChkMsg.innerText = "사용가능한 아이디 입니다."
+                        idChkMsg.alert("사용 가능한 아이디 입니다.");
+                        /*idChkMsg.innerText = "사용가능한 아이디 입니다."*/
                         checkId = 1;
                     }
                 }
@@ -147,6 +150,38 @@
     });
 
 
+
+ /*   function idCheck(){
+
+        let $memberId = $("#enroll-form input[name=memberId]");
+
+        $.ajax({
+            url : "idCheck.me",
+            data : {checkId : $userId.val() },
+            success : function(result){
+                if(result == "0") {
+                    alert("이미 존재하거나 회원탈퇴한 아이디입니다.");
+                    $memberId.focus();
+
+                } else {
+                    if(confirm("사용가능한 아이디입니다. 사용하시겠습니까?")) {
+
+                        $("#enroll-form :submit").removeAttr("disabled");
+                        $memberId.attr("readonly",true);
+
+                    } else {
+                        $memberId.focus();
+                    }
+                }
+            },
+            error : function() {
+                console.log("아이디 중복체크 실패");
+            }
+        })
+
+    }*/
+
+
     //비밀번호 유효성 검사
 
     const memberPw = document.querySelector("#memberPw");
@@ -155,16 +190,16 @@
     memberPw.addEventListener("change", function() {
 
         const inputPw = memberPw.value;
-        const pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+        const pwReg = /^[a-zA-Z0-9]{8,}$/;
         const pwChkMsg = document.querySelector("#pwChkMsg");
 
         const inputPwRe = memberPwRe.value;
         const pwReChkMsg = document.querySelector("#pwReChkMsg");
         if (pwReg.test(inputPw)) {
-            pwChkMsg.innerText = "조건이 일치합니다."
+            pwChkMsg.innerText = "사용 가능한 비밀번호 입니다"
             checkPwd = 1;
         } else {
-            pwChkMsg.innerText = "조건이 일치하지 않습니다."
+            pwChkMsg.innerText = "사용 불가능한 비밀번호 입니다. 다시 입력해주세요."
             checkPwd = 0;
         }
         if(inputPwRe != ""){
@@ -180,12 +215,14 @@
         }
     });
 
+
+
+
     memberPwRe.addEventListener("change", function() {
         const inputPw = memberPw.value;
         const inputPwRe = memberPwRe.value;
         const pwReChkMsg = document.querySelector("#pwReChkMsg");
         if (inputPw == inputPwRe) {
-
             pwReChkMsg.innerText = "비밀번호가 일치합니다."
             checkPwdRe = 1;
         } else {
@@ -196,7 +233,43 @@
 
 
 
-    //인증 메일
+    // 닉네임 중복 체크
+
+    const nickName = document.querySelector("#nickName");
+
+    $("[name=nickName]").on("change", function() {
+        const nickName = $(this).val();
+        const nickReg = /^[a-zA-Zㄱ-힣]{3,}/;
+
+        const nickNameChkMsg = document.querySelector("#nickNameChkMsg");
+        if (nickReg.test(nickName)) {
+            $.ajax({
+                url: "/ajaxChecknickName.do",
+                type: "get",
+                data: { nickName: nickName },
+                success: function(data) {
+
+                    if (data == "1") {
+                        idChkMsg.alert("이미 사용중인 닉네임 입니다.");
+                        checkId = 0;
+                    } else if (data == "0") {
+                        idChkMsg.alert("사용 가능한 닉네임 입니다.");
+                        checkId = 1;
+                    }
+                }
+            });
+
+        } else {
+            nickNameChkMsg.alert("닉네임을 입력해 주세요.");
+            checkNickname = 0;
+        }
+    });
+
+
+
+
+
+    // 메일 인증번호
 
     let mailCode;
     function sendMail() {
@@ -209,7 +282,6 @@
                 if (data != null) {
                     mailCode = data;
                     $("#auth").css("display","flex");
-
                     authTime();
                 }
             }
@@ -218,7 +290,6 @@
 
     let intervalId;
     function authTime() {
-
         $("#timeZone").html("<span id='min'>3</span> : <span id='sec'>00</span>");
         intervalId = window.setInterval(function() {
             timeCount();
@@ -266,7 +337,6 @@
             }
         } else {
             $("#authMsg").text("인증시간이 만료되었습니다.");
-
             checkMail = 0;
         }
 

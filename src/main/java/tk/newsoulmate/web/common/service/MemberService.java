@@ -45,6 +45,12 @@ public class MemberService {
 
     public Member selectOneMember(String memberId) {
 
+        return null;
 
+    }
+
+    public Member selectNickMember(String nickName) {
+
+        return null;
     }
 }

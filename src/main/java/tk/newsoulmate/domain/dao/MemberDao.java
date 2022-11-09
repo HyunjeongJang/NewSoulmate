@@ -102,6 +102,8 @@ public class MemberDao {
 
     public static String sendMail(String email) {
 
+        return null;
+
 
 
 

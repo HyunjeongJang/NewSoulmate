@@ -21,12 +21,11 @@
         </div>
 
         <div class="agree">
-            <label><input type="checkbox" name="agreeCheckBox" class="allcheck">이용약관의
-                내용에 모두 동의합니다.</label>
+            <label><input type="checkbox" name="agreeCheckBox" class="allcheck">이용약관의 내용에 모두 동의합니다.</label>
         </div>
 
         <div class="agree">
-            <label><input type="checkbox" name="agreeCheckBox1" required>이용약관에 동의합니다. (필수)</label>
+            <label><input type="checkbox" name="agreeCheckBox" required>이용약관에 동의합니다.(필수)</label>
         </div>
 
         <div>
@@ -39,7 +38,7 @@
             </div>
 
             <div class="agree">
-                <label><input type="checkbox" name="agreeCheckBox1" required>개인정보 수집약관의 내용에 동의합니다.(필수)</label>
+                <label><input type="checkbox" name="agreeCheckBox" required>개인정보 수집약관의 내용에 동의합니다.(필수)</label>
             </div>
 
             <div>
@@ -88,8 +87,9 @@
         });
     });
 
-
 </script>
+
+
 
 </body>
 </html>

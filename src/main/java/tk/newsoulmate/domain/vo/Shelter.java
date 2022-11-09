@@ -37,6 +37,19 @@ public class Shelter {
         this.cityNo = cityNo;
         this.villageNo = villageNo;
     }
+    public Shelter(String shelterName,String shelterAddress, String shelterLandline){
+        this.shelterAddress = shelterAddress;
+        this.shelterName = shelterName;
+        this.shelterLandline = shelterLandline;
+    }
+
+    public Shelter(String shelterName,String shelterAddress, String shelterLandline,long villageNo, long shelterNo){
+        this.shelterName=shelterName;
+        this.shelterAddress = shelterAddress;
+        this.shelterLandline=shelterLandline;
+        this.villageNo =villageNo;
+        this.shelterNo=shelterNo;
+    }
 
     public long getShelterNo() {
         return shelterNo;

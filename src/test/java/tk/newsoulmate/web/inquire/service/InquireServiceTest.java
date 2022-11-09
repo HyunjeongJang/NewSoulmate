@@ -5,11 +5,10 @@ import org.junit.jupiter.api.Test;
 import tk.newsoulmate.domain.dao.BoardDao;
 import tk.newsoulmate.domain.vo.PageInfo;
 import tk.newsoulmate.web.common.JDBCTemplet;
-
+import tk.newsoulmate.domain.vo.Board;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class InquireServiceTest {
@@ -30,7 +29,8 @@ class InquireServiceTest {
     @Test
     void selectQnAList() {
         Connection conn = JDBCTemplet.getTestConnection();
-        ArrayList<BOARD> list = new BoardDao().selectQnAList(conn, pi);
+        PageInfo pi= new PageInfo(1,1,"문의");
+        ArrayList<Board> list = new BoardDao().selectQnAList(conn, pi);
 
 
 

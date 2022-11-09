@@ -1,7 +1,7 @@
-package tk.newsoulmate.web.common.controller;
+package tk.newsoulmate.web.member.controller;
 
 import tk.newsoulmate.domain.vo.Member;
-import tk.newsoulmate.web.common.service.MemberService;
+import tk.newsoulmate.web.member.sevice.MemberService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

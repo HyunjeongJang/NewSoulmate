@@ -67,6 +67,7 @@ public class BoardDao {
     }
 
 
+
     public int selectListCount(Connection conn, String categoryName){
 
         int listCount = 0;

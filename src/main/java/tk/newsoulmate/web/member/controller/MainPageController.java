@@ -1,4 +1,4 @@
-package tk.newsoulmate.web.common.controller;
+package tk.newsoulmate.web.member.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +11,7 @@ import java.io.IOException;
 public class MainPageController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("views/common/MainPage.jsp").forward(request,response);
     }
 
     @Override

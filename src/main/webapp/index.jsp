@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="kr">
 <body>
-
-<%--<jsp:forward page="<%=request.getContextPath()%>Main"/>--%>
+<%--<%=request.getContextPath()%>--%>
+<jsp:forward page="/Main"/>
 
 
 </body>

@@ -93,6 +93,17 @@ public class Board {
         return b;
     }
 
+    public static Board selectAdoptDetail(String boardTitle,String memberName,Date issueDate ,Date createDate,int readCount,String boardContent){
+        Board b = new Board();
+        b.setBoardTitle(boardTitle);
+        b.setMemberName(memberName);
+        b.setIssueDate(issueDate);
+        b.setCreateDate(createDate);
+        b.setReadCount(readCount);
+        b.setBoardContent(boardContent);
+        return b;
+    }
+
     public int getBoardNo() {
         return boardNo;
     }
@@ -172,4 +183,6 @@ public class Board {
     public void setIssueDate(Date issueDate) {
         this.issueDate = issueDate;
     }
+
+
 }

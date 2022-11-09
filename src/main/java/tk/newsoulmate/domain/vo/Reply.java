@@ -35,6 +35,13 @@ public class Reply {
         this.replyDate = replyDate;
     }
 
+    public Reply(int replyNo, int memberNo, String replyContent, Date replyDate) {
+        this.replyNo = replyNo;
+        this.memberNo = memberNo;
+        this.replyContent = replyContent;
+        this.replyDate = replyDate;
+    }
+
     public int getReplyNo() {
         return replyNo;
     }

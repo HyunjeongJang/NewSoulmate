@@ -50,7 +50,6 @@
 <%@include file="/views/templet/footer.jsp"%>
 
 
-
 </body>
 </html>
 

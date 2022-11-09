@@ -4,7 +4,7 @@
 <body>
 
 <jsp:forward page="<%=request.getContextPath()%>Main"/>
-
+<%--<%@include file="views/templet/menubar.jsp"%>--%>
 
 
 

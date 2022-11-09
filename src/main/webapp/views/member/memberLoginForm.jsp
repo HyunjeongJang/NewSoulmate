@@ -35,7 +35,7 @@
 
                 </tr>
                 <tr>
-                    <th colspan="2"><button type="submit" class="btn3">로그인하기</button></th>
+                    <td colspan="2" align="center"><button type="submit" class="btn3">로그인하기</button></td>
                 </tr>
                 <tr>
                     <th><a href="searchMember.do">아이디/비밀번호 찾기</a></th>

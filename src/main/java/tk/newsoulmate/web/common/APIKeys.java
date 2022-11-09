@@ -14,7 +14,7 @@ public class APIKeys {
         String FilePath= Request.class.getResource("/key/APIkey.xml").getPath();
         this.prop=new Properties();
         try {
-            prop.loadFromXML(new FileInputStream("FilePath") );
+            prop.loadFromXML(new FileInputStream(FilePath) );
         } catch (
                 IOException e) {
             throw new RuntimeException(e);

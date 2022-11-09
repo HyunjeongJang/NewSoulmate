@@ -1,23 +1,23 @@
 package tk.newsoulmate.domain.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Notice{
     private long desertionNo;
-    private String noticeNo;
     private String filename;
     private Date happenDt;
     private String happenPlace;
     private String  kindCd;
-    private String color;
+    private String colorCd;
     private String age;
     private String  weight;
+    private String noticeNo;
     private Date noticeSdt;
     private Date noticeEdt;
     private String popfile;
     private String processState ;
-    private char sexCd;
-    private char neuterYn;
+    private String sexCd;
+    private String neuterYn;
     private String specialMark;
     private String careNm;
     private String careTel;
@@ -25,6 +25,7 @@ public class Notice{
     private String orgNm;
     private String chargeNm;
     private String officetel;
+    private String noticeComment;
 
     public long getDesertionNo() {
         return desertionNo;
@@ -32,14 +33,6 @@ public class Notice{
 
     public void setDesertionNo(long desertionNo) {
         this.desertionNo = desertionNo;
-    }
-
-    public String getNoticeNo() {
-        return noticeNo;
-    }
-
-    public void setNoticeNo(String noticeNo) {
-        this.noticeNo = noticeNo;
     }
 
     public String getFilename() {
@@ -74,12 +67,12 @@ public class Notice{
         this.kindCd = kindCd;
     }
 
-    public String getColor() {
-        return color;
+    public String getColorCd() {
+        return colorCd;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColorCd(String colorCd) {
+        this.colorCd = colorCd;
     }
 
     public String getAge() {
@@ -96,6 +89,14 @@ public class Notice{
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    public String getNoticeNo() {
+        return noticeNo;
+    }
+
+    public void setNoticeNo(String noticeNo) {
+        this.noticeNo = noticeNo;
     }
 
     public Date getNoticeSdt() {
@@ -130,19 +131,19 @@ public class Notice{
         this.processState = processState;
     }
 
-    public char getSexCd() {
+    public String getSexCd() {
         return sexCd;
     }
 
-    public void setSexCd(char sexCd) {
+    public void setSexCd(String sexCd) {
         this.sexCd = sexCd;
     }
 
-    public char getNeuterYn() {
+    public String getNeuterYn() {
         return neuterYn;
     }
 
-    public void setNeuterYn(char neuterYn) {
+    public void setNeuterYn(String neuterYn) {
         this.neuterYn = neuterYn;
     }
 
@@ -202,18 +203,26 @@ public class Notice{
         this.officetel = officetel;
     }
 
+    public String getNoticeComment() {
+        return noticeComment;
+    }
+
+    public void setNoticeComment(String noticeComment) {
+        this.noticeComment = noticeComment;
+    }
+
     @Override
     public String toString() {
         return "Notice{" +
                 "desertionNo=" + desertionNo +
-                ", noticeNo='" + noticeNo + '\'' +
                 ", filename='" + filename + '\'' +
                 ", happenDt=" + happenDt +
                 ", happenPlace='" + happenPlace + '\'' +
                 ", kindCd='" + kindCd + '\'' +
-                ", color='" + color + '\'' +
+                ", colorCd='" + colorCd + '\'' +
                 ", age='" + age + '\'' +
                 ", weight='" + weight + '\'' +
+                ", noticeNo='" + noticeNo + '\'' +
                 ", noticeSdt=" + noticeSdt +
                 ", noticeEdt=" + noticeEdt +
                 ", popfile='" + popfile + '\'' +
@@ -227,6 +236,7 @@ public class Notice{
                 ", orgNm='" + orgNm + '\'' +
                 ", chargeNm='" + chargeNm + '\'' +
                 ", officetel='" + officetel + '\'' +
+                ", noticeComment='" + noticeComment + '\'' +
                 '}';
     }
 }

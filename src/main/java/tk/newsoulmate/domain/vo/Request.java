@@ -34,8 +34,10 @@ public class Request {
     }
 
     public Request() {
-        serviceKey= APIKeys.NoticeKey;
+        this.serviceKey= APIKeys.NoticeKey;
         this._type = "JSON";
+        this.pageNo=1;
+        this.numberOfRows=1;
     }
 
     public String getServiceKey() {
@@ -192,12 +194,16 @@ public class Request {
                 urlBuilder.append("&" + URLEncoder.encode("neuter_yn", "UTF-8") + "=" +
                         URLEncoder.encode(neuter, "UTF-8"));
             }
-            urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" +
-                    URLEncoder.encode(String.valueOf(pageNo), "UTF-8"));
+            if(pageNo!=null) {
+                urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" +
+                        URLEncoder.encode(String.valueOf(pageNo), "UTF-8"));
+            }
+            if(numberOfRows!=null){
             urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" +
-                    URLEncoder.encode(String.valueOf(numberOfRows), "UTF-8"));
+                    URLEncoder.encode(String.valueOf(numberOfRows), "UTF-8"));}
             urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
             url=new URL(urlBuilder.toString());
+
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         } catch (MalformedURLException e) {

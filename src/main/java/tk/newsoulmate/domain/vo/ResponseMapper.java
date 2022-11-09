@@ -32,7 +32,7 @@ public class ResponseMapper {
             this.body = body;
         }
 
-        class Header{
+        public class Header{
             private int reqNo;
             private int resultCode;
             private String resultMsg;
@@ -70,7 +70,7 @@ public class ResponseMapper {
                 this.errorMsg = errorMsg;
             }
         }
-        class Body{
+        public class Body{
             private Items items;
             private int totalCount;
 
@@ -89,7 +89,7 @@ public class ResponseMapper {
             public void setItems(Items items) {
                 this.items = items;
             }
-            class Items{
+            public class Items{
                 private List<Notice> item;
                 public List<Notice> getItem() {
                     return item;

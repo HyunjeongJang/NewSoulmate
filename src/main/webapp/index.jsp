@@ -3,7 +3,7 @@
 <html lang="kr">
 <body>
 
-<jsp:forward page="<%=request.getContextPath()%>Main"/>
+<%--<jsp:forward page="<%=request.getContextPath()%>Main"/>--%>
 
 
 </body>

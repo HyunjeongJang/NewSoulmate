@@ -17,14 +17,14 @@ public class Member {
     public Member() {
     }
 
-    public Member(String memberId, String memberPwd, String memberName, String Phone, String Email, String nickName) {
+    public Member(String memberId, String memberPwd, String memberName, String nickName, String Phone, String Email) {
         super();
         this.memberId = memberId;
         this.memberPwd = memberPwd;
         this.memberName = memberName;
+        this.nickName = nickName;
         this.Phone = Phone;
         this.Email = Email;
-        this.nickName = nickName;
     }
 
 

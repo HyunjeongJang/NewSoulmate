@@ -14,7 +14,7 @@
 
 <%@include file="/views/templet/menubar.jsp"%>
 
-<div class="content-wrap">
+<div class="content-wrap" align="center">
     <div class="title-wrap">
         <h2>로그인</h2>
     </div>
@@ -30,15 +30,18 @@
                     <td> <input class="input-form" type="password" name="loginPw" id="loginPw"placeholder="비밀번호"></td>
                 </tr>
                 <tr>
-                    <th colspan="2"><a href="searchMember.do">아이디/비밀번호 찾기</a></th>
+                    <td><input type="checkbox">아이디 저장</td>
+                    <td></td>
+
                 </tr>
                 <tr>
-                    <th colspan="2">
-                    </th>
+                    <th colspan="2"><button type="submit" class="btn3">로그인하기</button></th>
                 </tr>
                 <tr>
-                    <th colspan="2"><button type="submit" class="btn3">로그인</button></th>
+                    <th><a href="searchMember.do">아이디/비밀번호 찾기</a></th>
+                    <th><a href="signup.do">신규 회원가입</a></th>
                 </tr>
+
             </table>
         </form>
     </div>

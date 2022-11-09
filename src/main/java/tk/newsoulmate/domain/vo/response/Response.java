@@ -3,6 +3,9 @@ package tk.newsoulmate.domain.vo.response;
 public class Response {
     private Header header;
     private Body body;
+    private int totalCount;
+
+
 
     public Header getHeader() {
         return header;
@@ -18,6 +21,13 @@ public class Response {
 
     public void setBody(Body body) {
         this.body = body;
+    }
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
     }
 
 }

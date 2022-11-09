@@ -3,6 +3,8 @@ package tk.newsoulmate.domain.dao;
 import com.google.gson.Gson;
 import tk.newsoulmate.domain.vo.Notice;
 import tk.newsoulmate.domain.vo.Request;
+import tk.newsoulmate.domain.vo.response.Body;
+import tk.newsoulmate.domain.vo.response.Response;
 import tk.newsoulmate.domain.vo.response.ResponseMapper;
 
 import java.io.FileInputStream;
@@ -13,6 +15,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class NoticeDao {
@@ -46,7 +49,7 @@ public class NoticeDao {
             if(conn.getResponseCode()>=200&&conn.getResponseCode()<=300){
                 Gson gson=new Gson();
                 responseMapper = gson.fromJson(new InputStreamReader(conn.getInputStream(),"UTF-8"), ResponseMapper.class);
-                int length=responseMapper.getResponse().getBody().getTotalCount();
+                int length=responseMapper.getResponse().getTotalCount();
                 List<Notice> Nlist=responseMapper.getResponse().getBody().getItems().getItem();
                 for (Notice n:Nlist) {
                     map.put(n.getDesertionNo(),n.getFilename());
@@ -73,6 +76,7 @@ public class NoticeDao {
         request.setPageNo(1);
         request.setNumberOfRows(numberOfRows);
         URL url = request.toUrl();
+        System.out.println(url.toString());
         ResponseMapper responseMapper=null;
         List<Notice> Nlist=new ArrayList<>();
         int length=0;
@@ -84,8 +88,11 @@ public class NoticeDao {
             if(httpConn.getResponseCode()>=200&&httpConn.getResponseCode()<=300){
                 Gson gson=new Gson();
                 responseMapper = gson.fromJson(new InputStreamReader(httpConn.getInputStream(),"UTF-8"), ResponseMapper.class);
-                length=responseMapper.getResponse().getBody().getTotalCount();
-                Nlist=responseMapper.getResponse().getBody().getItems().getItem();
+                Response r =responseMapper.getResponse();
+                Body b=r.getBody();
+                length=r.getTotalCount();
+                System.out.println(length);
+                Nlist=b.getItems().getItem();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -1,23 +1,23 @@
 package tk.newsoulmate.domain.vo.response;
 public class Header{
-    private int reqNo;
-    private int resultCode;
+    private long reqNo;
+    private String resultCode;
     private String resultMsg;
     private String errorMsg;
 
-    public int getReqNo() {
+    public long getReqNo() {
         return reqNo;
     }
 
-    public void setReqNo(int reqNo) {
+    public void setReqNo(long reqNo) {
         this.reqNo = reqNo;
     }
 
-    public int getResultCode() {
+    public String getResultCode() {
         return resultCode;
     }
 
-    public void setResultCode(int resultCode) {
+    public void setResultCode(String resultCode) {
         this.resultCode = resultCode;
     }
 

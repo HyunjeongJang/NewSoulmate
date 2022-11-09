@@ -1,16 +1,12 @@
 package tk.newsoulmate.domain.vo;
 import tk.newsoulmate.web.common.APIKeys;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
 
 public class Request {
     private String serviceKey;
@@ -157,7 +153,7 @@ public class Request {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic"); /*URL*/
         URL url;
         try {
-            urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") +"="+URLEncoder.encode(serviceKey,"UTF-8")); /*Service Key*/
+            urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") +"="+serviceKey); /*Service Key*/
             if (bgndate != null) {
                 urlBuilder.append("&" + URLEncoder.encode("bgnde", "UTF-8") + "=" +
                         URLEncoder.encode(urlDate.format(bgndate), "UTF-8"));

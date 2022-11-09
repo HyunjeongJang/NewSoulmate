@@ -22,9 +22,7 @@ class NoticeDaoTest {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","NEWSOULMATE","NEWSOULMATE");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         int result=0;

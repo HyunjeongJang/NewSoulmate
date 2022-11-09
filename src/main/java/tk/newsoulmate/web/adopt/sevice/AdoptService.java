@@ -1,4 +1,4 @@
-package tk.newsoulmate.web.common.sevice;
+package tk.newsoulmate.web.adopt.sevice;
 
 import tk.newsoulmate.domain.dao.BoardDao;
 import tk.newsoulmate.domain.vo.Board;
@@ -18,7 +18,7 @@ public class AdoptService {
         int result = new BoardDao().readCount(conn, boardNo);
 
         if(result > 0) {
-            commit(conn);
+            commit();
         }else {
             rollback(conn);
         }
@@ -46,7 +46,7 @@ public class AdoptService {
         int result = new BoardDao().insertReply(conn, r);
 
         if (result > 0) {
-            commit(conn);
+            commit();
         } else {
             rollback(conn);
         }
@@ -56,7 +56,6 @@ public class AdoptService {
     public ArrayList<Reply> selectReplyList(int boardNo){
 
         Connection conn = getConnection();
-
         ArrayList<Reply> list = new BoardDao().selectReplyList(conn, boardNo);
 
         close();

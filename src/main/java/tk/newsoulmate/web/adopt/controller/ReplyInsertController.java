@@ -1,8 +1,8 @@
-package tk.newsoulmate.web.common.controller;
+package tk.newsoulmate.web.adopt.controller;
 
 import tk.newsoulmate.domain.vo.Member;
 import tk.newsoulmate.domain.vo.Reply;
-import tk.newsoulmate.web.common.sevice.AdoptService;
+import tk.newsoulmate.web.adopt.sevice.AdoptService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

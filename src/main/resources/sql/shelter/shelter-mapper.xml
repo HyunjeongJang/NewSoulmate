@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-    <entry key="selectList">
+
+    <entry key="selectShelterList">
         SELECT
-            SHELTER_NAME,
-            SHELTER_ADDRESS,
-            SHELTER_LANDLINE
+        SHELTER_NAME,
+        SHELTER_ADDRESS,
+        SHELTER_LANDLINE
         FROM SHELTER
         WHERE SHELTER_ADDRESS IS NOT NULL
     </entry>
 
-    <entry key="selectCity">
+    <entry key="selectCityAll">
         SELECT *
         FROM CITY
+    </entry>
+
+    <entry key="selectVillageAll">
+        SELECT *
+        FROM VILLAGE
     </entry>
 
     <entry key="selectVillage">
         SELECT *
         FROM VILLAGE
-    </entry>
-
-    <entry key="selectCity2">
-        SELECT VILLAGE_NO,
-               CITY_NO,
-               VILLAGE_NAME
-        FROM VILLAGE
         WHERE CITY_NO = ?
-
     </entry>
 
-    <entry key="selectVillage2">
+    <entry key="ShelterListByVillage">
         SELECT
-                SHELTER_NAME,
-                SHELTER_ADDRESS,
-                SHELTER_LANDLINE,
-                VILLAGE_NO,
-                SHELTER_NO
+        SHELTER_NO
+        SHELTER_NAME
         FROM SHELTER
         WHERE VILLAGE_NO = ?
+        WHERE SHELTER_ADDRESS IS NOT NULL
     </entry>
 
 

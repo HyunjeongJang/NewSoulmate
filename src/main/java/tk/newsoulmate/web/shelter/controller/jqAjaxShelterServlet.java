@@ -1,9 +1,8 @@
-package tk.newsoulmate.web.common.controller;
+package tk.newsoulmate.web.shelter.controller;
 
 import com.google.gson.Gson;
-import tk.newsoulmate.domain.vo.City;
 import tk.newsoulmate.domain.vo.Village;
-import tk.newsoulmate.web.common.sevice.ShelterService;
+import tk.newsoulmate.web.shelter.service.ShelterService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -15,9 +14,9 @@ import java.util.ArrayList;
 public class jqAjaxShelterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int cityNo = Integer.parseInt(request.getParameter("city"));
+        Long cityNo = Long.parseLong(request.getParameter("city"));
 
-        ArrayList<Village> vList2= new ShelterService().selectCity2(cityNo);
+        ArrayList<Village> vList2= new ShelterService().selectVillage(cityNo);
 
 
         response.setContentType("application/json; charset=UTF-8");

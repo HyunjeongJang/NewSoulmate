@@ -17,18 +17,19 @@ public class ShelterDao {
 
     public ShelterDao(){
         try {
-            prop.loadFromXML(new FileInputStream(ShelterDao.class.getResource("/sql/shelter/shelter-mapper.xml").getPath()));
+            String FileName=ShelterDao.class.getResource("/sql/shelter/Shelter-Mapper.xml").getPath();
+            prop.loadFromXML(new FileInputStream(FileName));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public ArrayList<Shelter> selectList(Connection conn){
+    public ArrayList<Shelter> selectShelterList(Connection conn){
 
         // select 문 resultSet
         ArrayList<Shelter> list = new ArrayList<>();
         PreparedStatement psmt = null;
         ResultSet rset = null;
-        String sql = prop.getProperty("selectList");
+        String sql = prop.getProperty("selectShelterList");
 
         try {
             psmt = conn.prepareStatement(sql);
@@ -37,8 +38,8 @@ public class ShelterDao {
 
             while(rset.next()){
                 list.add(new Shelter(rset.getString("SHELTER_NAME"),
-                                     rset.getString("SHELTER_ADDRESS"),
-                                     rset.getString("SHELTER_LANDLINE")));
+                        rset.getString("SHELTER_ADDRESS"),
+                        rset.getString("SHELTER_LANDLINE")));
             }
 
         } catch (SQLException e) {
@@ -50,11 +51,11 @@ public class ShelterDao {
         return list;
     }
 
-    public ArrayList<City> selectCity(Connection conn){
+    public ArrayList<City> selectCityAll(Connection conn){
         ArrayList<City> cList = new ArrayList<>();
         PreparedStatement psmt = null;
         ResultSet rset = null;
-        String sql = prop.getProperty("selectCity");
+        String sql = prop.getProperty("selectCityAll");
 
         try {
             psmt = conn.prepareStatement(sql);
@@ -63,7 +64,7 @@ public class ShelterDao {
 
             while(rset.next()){
                 cList.add(new City(rset.getLong("CITY_NO"),
-                                   rset.getString("CITY_NAME")));
+                        rset.getString("CITY_NAME")));
             }
 
         } catch (SQLException e) {
@@ -75,21 +76,56 @@ public class ShelterDao {
         return cList;
     }
 
-    public ArrayList<Village> selectVillage(Connection conn){
+//    public ArrayList<Village> selectVillageAll(Connection conn){
+//        ArrayList<Village> vList = new ArrayList<>();
+//        PreparedStatement psmt = null;
+//        ResultSet rset = null;
+//        String sql = prop.getProperty("selectVillageAll");
+//
+//        try {
+//            psmt = conn.prepareStatement(sql);
+//
+//            rset = psmt.executeQuery();
+//            while(rset.next()){
+//                vList.add(new Village(rset.getLong("VILLAGE_NO"),
+//                        rset.getLong("CITY_NO"),
+//                        rset.getString("VILLAGE_NAME")));
+//            }
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }finally {
+//            JDBCTemplet.close(rset);
+//            JDBCTemplet.close(psmt);
+//        }
+//        return vList;
+//    }
+
+    /**
+     *
+     * @param cityNo 도시번호
+     * @param conn
+     * @return 도시번호에 해당하는 마을번호 리스트
+     */
+    public ArrayList<Village> selectVillage(long cityNo, Connection conn){
         ArrayList<Village> vList = new ArrayList<>();
         PreparedStatement psmt = null;
         ResultSet rset = null;
-        String sql = prop.getProperty("selectVillage");
+        String sql = prop.getProperty("selectCity");
 
         try {
             psmt = conn.prepareStatement(sql);
 
+            psmt.setLong(1,cityNo);
+
             rset = psmt.executeQuery();
+
             while(rset.next()){
-                vList.add(new Village(rset.getLong("VILLAGE_NO"),
-                        rset.getLong("CITY_NO"),
+                vList.add(new Village(rset.getLong("CITY_NO"),
+                        rset.getLong("VILLAGE_NO"),
                         rset.getString("VILLAGE_NAME")));
             }
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -100,57 +136,27 @@ public class ShelterDao {
         return vList;
     }
 
-    public ArrayList<Village> selectCity2(int cityNo, Connection conn){
-        ArrayList<Village> vList2 = new ArrayList<>();
+
+    /**
+     * 시군구번호로 보호소 리스트를 조회하는 용도
+     * @param villageNo
+     * @param conn
+     * @return shelterName,shelterNo가 담긴 shelterList
+     */
+    public ArrayList<Shelter> selectShelterByVillage(long villageNo, Connection conn){
+        ArrayList<Shelter> sList = new ArrayList<>();
         PreparedStatement psmt = null;
         ResultSet rset = null;
-        String sql = prop.getProperty("selectCity2");
+        String sql = prop.getProperty("ShelterListByVillage");
+
 
         try {
             psmt = conn.prepareStatement(sql);
-
-            psmt.setInt(1,cityNo);
-
+            psmt.setLong(1,villageNo);
             rset = psmt.executeQuery();
-
-            while(rset.next()){
-                vList2.add(new Village(rset.getLong("CITY_NO"),
-                                       rset.getLong("VILLAGE_NO"),
-                                       rset.getString("VILLAGE_NAME")));
-            }
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }finally {
-            JDBCTemplet.close(rset);
-            JDBCTemplet.close(psmt);
-        }
-        return vList2;
-    }
-
-    public ArrayList<Shelter> selectVillage2(int villageNo, Connection conn){
-        ArrayList<Shelter> sList2 = new ArrayList<>();
-        PreparedStatement psmt = null;
-        ResultSet rset = null;
-        String sql = prop.getProperty("selectVillage2");
-
-        try {
-            psmt = conn.prepareStatement(sql);
-
-            psmt.setInt(1,villageNo);
-
-            rset = psmt.executeQuery();
-
             while(rset.next()) {
-                sList2.add(new Shelter(
-                        rset.getString("SHELTER_NAME"),
-                        rset.getString("SHELTER_ADDRESS"),
-                        rset.getString("SHELTER_LANDLINE"),
-                        rset.getLong("VILLAGE_NO"),
-                        rset.getLong("SHELTER_NO")));
+                sList.add(new Shelter(rset.getLong("SHELTER_NO"), rset.getString("SHELTER_NAME")));
             }
-
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -158,7 +164,7 @@ public class ShelterDao {
             JDBCTemplet.close(rset);
             JDBCTemplet.close(psmt);
         }
-        return sList2;
+        return sList;
     }
 
 

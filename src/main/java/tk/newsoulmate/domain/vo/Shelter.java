@@ -51,6 +51,11 @@ public class Shelter {
         this.shelterNo=shelterNo;
     }
 
+    public Shelter(long shelterNo, String shelterName) {
+        this.shelterNo = shelterNo;
+        this.shelterName = shelterName;
+    }
+
     public long getShelterNo() {
         return shelterNo;
     }

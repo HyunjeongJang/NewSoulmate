@@ -1,9 +1,9 @@
-package tk.newsoulmate.web.common.controller;
+package tk.newsoulmate.web.shelter.controller;
 
 import tk.newsoulmate.domain.vo.City;
 import tk.newsoulmate.domain.vo.Shelter;
 import tk.newsoulmate.domain.vo.Village;
-import tk.newsoulmate.web.common.sevice.ShelterService;
+import tk.newsoulmate.web.shelter.service.ShelterService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -18,7 +18,7 @@ public class ShelterListController extends HttpServlet {
 
         ArrayList<Shelter> sList = new ShelterService().selectList();
         ArrayList<City> cList = new ShelterService().selectCity();
-        ArrayList<Village> vList = new ShelterService().selectVillage();
+        ArrayList<Village> vList = new ShelterService().selectVillage(cList.get(0).getCityNo());
         request.setAttribute("sList",sList);
         request.setAttribute("cList",cList);
         request.setAttribute("vList",vList);

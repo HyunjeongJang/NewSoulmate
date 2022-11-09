@@ -6,7 +6,5 @@
 <jsp:forward page="<%=request.getContextPath()%>Main"/>
 
 
-
-
 </body>
 </html>

@@ -17,6 +17,16 @@ public class Member {
     public Member() {
     }
 
+    public Member(String memberId, String memberPwd, String memberName, String Phone, String Email, String nickName) {
+        super();
+        this.memberId = memberId;
+        this.memberPwd = memberPwd;
+        this.memberName = memberName;
+        this.Phone = Phone;
+        this.Email = Email;
+        this.nickName = nickName;
+    }
+
 
     public int getMemberNo() {
         return memberNo;

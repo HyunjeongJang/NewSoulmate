@@ -1,0 +1,62 @@
+/*폰트 : 노토산스 */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.headcontainer {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+#right_view {
+    float: right;
+    padding: 20px;
+    margin: 0px;
+    width: 910px;
+    height: auto;
+}
+
+#user_information {
+    font-size: 23px;
+    padding: 15px 25px;
+}
+
+#memberList {
+    margin-top: 30px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 860px;
+
+}
+
+thead th {
+    font-size: 23px;
+    border-top: 1px solid rgb(203, 203, 203);
+    background-color: rgb(236, 236, 236);
+    padding: 10px 10px;
+    text-align: center;
+}
+
+thead th:first-child {
+    padding: 0 10px;
+
+}
+
+tbody td {
+    border-top: 1px solid rgb(203, 203, 203);
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/*페이징바*/
+.btn-secondary {
+    background-color: #319493 ;
+}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="insertSubscription">
+        INSERT INTO SUBSCRIPTION(SUB_NO,MEMBER_NO,SHELTER_NO,ANIMAL_NO,TEL_NUM,NAME,GENDER,ADOPT_REASON,FAMILY_AGREEMENT,WHEN_SICK,BIG_DUTY,WISH_DATE,SUB_READ,SUB_DATE)
+        VALUES(SQ_SUBSCRIPTION_PK.nextval,?,?,?,?,?,?,?,?,?,?,?,?,DEFAULT)
+    </entry>
+
+    <entry key="selectAdoptApplyListCount">
+        SELECT COUNT(*) AS cnt
+        FROM SUBSCRIPTION
+    </entry>
+
+    <entry key="selectAdoptApplyList">
+        SELECT *
+        FROM(
+            SELECT
+                ROWNUM AS "RNUM",
+                A.*
+            FROM(
+                SELECT
+                    S.SUB_NO,
+                    S.ANIMAL_NO,
+                    M.MEMBER_ID,
+                    S.NAME,
+                    S.TEL_NUM,
+                    S.SUB_DATE,
+                    S.SUB_READ
+
+                FROM SUBSCRIPTION S
+                JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO)
+                ORDER BY S.SUB_NO
+                ) A
+            )
+        WHERE RNUM BETWEEN ? AND ?
+    </entry>
+    <entry key="shelterNoAdoptApplyList">
+        SELECT *
+        FROM(
+        SELECT
+        ROWNUM AS "RNUM",
+        A.*
+        FROM(
+        SELECT
+        S.SUB_NO,
+        S.ANIMAL_NO,
+        M.MEMBER_ID,
+        S.NAME,
+        S.TEL_NUM,
+        S.SUB_DATE,
+        S.SUB_READ
+
+        FROM SUBSCRIPTION S
+        JOIN MEMBER M ON (S.MEMBER_NO = M.MEMBER_NO)
+        WHERE S.SHELTER_NO = ?
+        ORDER BY S.SUB_NO
+        ) A
+        )
+        WHERE RNUM BETWEEN ? AND ?
+    </entry>
+
+    <entry key="shelterNoAdoptApplyListCount">
+        SELECT COUNT(*) AS cnt
+        FROM SUBSCRIPTION
+        WHERE SHELTER_NO = ?
+    </entry>
+
+    <entry key="selectAdoptApplyDetail">
+        SELECT *
+        FROM SUBSCRIPTION
+        WHERE SUB_NO = ?
+    </entry>
+
+    <entry key="changeAdoptApplySubRead">
+        UPDATE SUBSCRIPTION
+        SET SUB_READ = 'Y'
+        WHERE SUB_NO = ?
+    </entry>
+
+    <entry key="deleteSubscription">
+        DELETE FROM SUBSCRIPTION
+        WHERE SUB_NO = ?
+    </entry>
+</properties>

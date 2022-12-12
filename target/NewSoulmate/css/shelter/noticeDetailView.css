@@ -1,0 +1,197 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background-color: #f8f5f2;
+}
+
+#content {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+#animalImg_1 {
+    width: 260px;
+    height: 200px;
+}
+
+#animal-info {
+    height: 250px;
+    display: flex;
+    padding: 25px 20px 25px 100px;
+    background-color: #bbe1e0;
+}
+
+#infoTable {
+    width: 700px;
+    height: 200px;
+    margin: 0 0 0 90px;
+    text-align: center;
+    border: lightgray 1px solid;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+#infoTable th {
+    width: 130px;
+    border: lightgray 1px solid;
+    background-color: #edeae6;
+}
+
+#infoTable td {
+    width: 220px;
+    border: lightgray 1px solid;
+    background-color: #f8f5f2;
+}
+
+#adopt-btn-box2 {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+}
+
+#adopt-apply,
+#adopt-step {
+    width: 170px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #377477;
+}
+
+#adopt-step {
+    float: left;
+    margin: 0 0 0 200px;
+}
+
+#adopt-apply {
+    margin-left: -120px;
+    display: inline-block;
+}
+
+#adopt_comment2 {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 190%;
+    color: #39393a;
+    cursor: none;
+}
+
+#btn-area2{
+    padding: 20px 200px 20px 200px
+}
+
+#animalImg_2{
+    width: 600px;
+    max-height: 800px;
+    margin: 50px 0 50px 300px;
+}
+
+#animal-detail{
+    width: 100%;
+    height: auto;
+}
+
+#comment1{
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 100px;
+    color: #39393a;
+}
+
+#reply-list{
+    width: 100%;
+    height: 600px;
+}
+
+#reply-line{
+    background-color: #bbe1e0;
+    height: 40px;
+}
+
+#replyTable{
+    width: 100%;
+    height: auto;
+    border-top: lightgray 1px solid;
+}
+
+#reply-list .replyWriter{
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 55px;
+}
+
+#reply-list td{
+    font-size: 20px;
+    padding-top: 20px;
+    padding-left: 55px;
+}
+
+.replyWriter , .replyDate{
+    width: 450px;
+    padding-right: 50px;
+}
+
+.replyReport , .replyDelete{
+    cursor: pointer;
+    font-size: 25px;
+    width: 100px;
+}
+
+.replyReport{
+    text-align: right;
+}
+.replyDelete{
+    padding-left: 20px;
+    text-align: left;
+}
+.replyWriter {
+    text-align: left;
+}
+
+.replyDate{
+    text-align: right;
+}
+
+.replyImg{
+    width: 400px;
+    height: 290px;
+}
+
+#replyInput{
+    padding: 10px 10px 10px 50px;
+}
+
+#replyApply{
+    width: 900px;
+    height: 70px;
+    border-radius: 5px;
+    font-size: 18px;
+    border: lightgray solid 1px;
+}
+
+#reply-btn{
+    width: 150px;
+    height: 70px;
+    background-color: #39393a;
+    color: white;
+    margin-left: 60px;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#replyFile{
+    margin-top: 10px;
+}

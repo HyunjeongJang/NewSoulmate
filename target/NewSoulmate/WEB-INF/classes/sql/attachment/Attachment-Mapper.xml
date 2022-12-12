@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<!--API키는 이파일에서 관리할것!-->
+<properties>
+
+    <entry key="insertBoardAttachment">
+        INSERT INTO ATTACHMENT(FILE_NO,BOARD_NO,ORIGIN_NAME, CHANGE_NAME, FILE_PATH)
+        VALUES (SQ_ATTACHMENT_PK.NEXTVAL,?,?, ?, ?)
+    </entry>
+
+    <entry key="insertGradeAttachment">
+        INSERT INTO ATTACHMENT(FILE_NO,BOARD_NO,ORIGIN_NAME, CHANGE_NAME, FILE_PATH)
+        VALUES (?,?,?, ?, ?)
+    </entry>
+
+    <entry key="insertReplyAttachment">
+        INSERT INTO ATTACHMENT(FILE_NO,Reply_NO,ORIGIN_NAME, CHANGE_NAME, FILE_PATH)
+        VALUES (SQ_ATTACHMENT_PK.NEXTVAL,?,?, ?, ?)
+    </entry>
+
+    <entry key="selectBoardAttachment">
+        SELECT FILE_NO,
+                BOARD_NO,
+                ORIGIN_NAME,
+                CHANGE_NAME,
+                FILE_PATH,
+                UPLOAD_DATE
+        FROM ATTACHMENT
+        WHERE BOARD_NO = ?
+        AND STATUS = 'Y'
+        ORDER BY FILE_NO
+    </entry>
+    <entry key="selectReplyAttachment">
+        SELECT
+                FILE_NO,
+                REPLY_NO,
+                ORIGIN_NAME,
+                CHANGE_NAME,
+                FILE_PATH,
+                UPLOAD_DATE
+        FROM ATTACHMENT
+        WHERE REPLY_NO = ?
+        AND STATUS = 'Y'
+        ORDER BY FILE_NO
+    </entry>
+
+
+    <entry key="insertInquireNewAttachment">
+        INSERT INTO ATTACHMENT(FILE_NO, BOARD_NO, ORIGIN_NAME, CHANGE_NAME, FILE_PATH)
+        VALUES (SQ_ATTACHMENT_PK.NEXTVAL, ?, ?, ?, ?);
+    </entry>
+
+    <entry key="deleteAttachment">
+        UPDATE ATTACHMENT
+        SET STATUS = 'N'
+        WHERE FILE_NO = ?
+    </entry>
+    <entry key="deleteBoardAttachment">
+        UPDATE ATTACHMENT
+        SET STATUS = 'N'
+        WHERE BOARD_NO = ?
+    </entry>
+    <entry key="selectFileNo">
+        SELECT
+        SQ_ATTACHMENT_PK.NEXTVAL
+        FROM DUAL
+    </entry>
+
+    <entry key="selectAttachment">
+        SELECT
+            FILE_NO,
+            ORIGIN_NAME,
+            CHANGE_NAME,
+            FILE_PATH,
+            UPLOAD_DATE
+        FROM ATTACHMENT
+        WHERE FILE_NO = ?
+    </entry>
+    <entry key="selectThumbnailList">
+        SELECT
+        *
+        FROM(
+            SELECT
+            ROWNUM as rnum,
+            A.*
+            FROM(
+            SELECT
+            BOARD_NO,
+            BOARD_TITLE,
+            ORIGIN_NAME,
+            CHANGE_NAME,
+            FILE_PATH
+            FROM BOARD
+            JOIN (
+            SELECT *
+            FROM ATTACHMENT
+            WHERE ROWID IN ( SELECT MAX(ROWID) FROM ATTACHMENT GROUP BY BOARD_NO)
+                AND STATUS='Y'
+            ) using(BOARD_NO)
+            WHERE BOARD_STATUS='Y' AND TYPE_NO=?
+            ORDER BY CREATE_DATE DESC
+            )A
+        )
+        WHERE rnum between ? AND ?
+    </entry>
+
+
+
+
+
+
+
+
+
+</properties>

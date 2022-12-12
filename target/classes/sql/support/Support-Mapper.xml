@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="insertSupport">
+        INSERT INTO SUPPORT VALUES(?,?,?)
+    </entry>
+
+    <entry key="initializeSupport">
+        INSERT INTO SUPPORT(SUPPORT_NO, SHELTER_NO, MEMBER_NO, MERCHANT_UID, AMOUNT, STATUS, DP_WD, WD_STATUS)
+        VALUES(SQ_SUPPORT_PK.NEXTVAL, ?, ?, ?, ?, 'PENDING', 'DP', 'BLOCK')
+    </entry>
+
+    <entry key="findByMerchantUid">
+        SELECT * FROM SUPPORT
+        WHERE MERCHANT_UID = ?
+    </entry>
+
+    <entry key="updateStatus">
+        UPDATE SUPPORT
+        SET STATUS = ?
+        WHERE MERCHANT_UID = ?
+    </entry>
+
+    <entry key="updateWithdrawStatusByMerchantUid">
+        UPDATE SUPPORT
+        SET WD_STATUS = ?
+        WHERE MERCHANT_UID = ?
+    </entry>
+
+    <entry key="updateWithdrawStatusBySupportNo">
+        UPDATE SUPPORT
+        SET WD_STATUS = ?
+        WHERE SUPPORT_NO = ?
+    </entry>
+
+    <entry key="selectAll">
+        SELECT *
+        FROM (
+        SELECT (ROWNUM) ROW_NUM, T.*
+        FROM (
+        SELECT
+        SU.SUPPORT_NO, SH.SHELTER_NAME, SU.AMOUNT, SU.PAY_TIME
+        FROM SUPPORT SU
+        INNER JOIN SHELTER SH on SH.SHELTER_NO = SU.SHELTER_NO
+        WHERE STATUS = 'DONE'
+        AND SU.MEMBER_NO = ?
+        ORDER BY PAY_TIME DESC
+        ) T
+        WHERE ROWNUM &lt;= ?
+        <!--<![CDATA[WHERE ROWNUM <= ?]]>-->
+        )
+        WHERE ROW_NUM &gt;= ?
+    </entry>
+
+    <entry key="selectAllByDate">
+        SELECT *
+        FROM (
+        SELECT (ROWNUM) ROW_NUM, T.*
+        FROM (
+        SELECT
+        SU.SUPPORT_NO, SH.SHELTER_NAME, SU.AMOUNT, SU.PAY_TIME
+        FROM SUPPORT SU
+        INNER JOIN SHELTER SH on SH.SHELTER_NO = SU.SHELTER_NO
+        WHERE STATUS = 'DONE'
+        AND SU.MEMBER_NO = ?
+        AND SU.PAY_TIME BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD')
+        ORDER BY PAY_TIME DESC
+        ) T
+        WHERE ROWNUM &lt;= ?
+        )
+        WHERE ROW_NUM &gt;= ?
+    </entry>
+
+    <entry key="selectAllByFilter">
+        SELECT *
+        FROM (
+        SELECT (ROWNUM) ROW_NUM, T.*
+        FROM (
+        SELECT *
+        FROM SUPPORT SU
+        INNER JOIN SHELTER SH on SH.SHELTER_NO = SU.SHELTER_NO
+        INNER JOIN MEMBER ME on ME.MEMBER_NO = SU.MEMBER_NO
+        AND SH.SHELTER_NAME like '%'||?||'%'
+        ORDER BY PAY_TIME DESC
+        ) T
+        WHERE ROWNUM &lt;= ?
+        )
+        WHERE ROW_NUM &gt;= ?
+    </entry>
+
+    <entry key="count">
+        SELECT
+        COUNT(*)
+        FROM SUPPORT SU
+        INNER JOIN SHELTER SH on SH.SHELTER_NO = SU.SHELTER_NO
+        WHERE STATUS = 'DONE'
+        AND SU.MEMBER_NO = ?
+        ORDER BY PAY_TIME DESC
+    </entry>
+
+    <entry key="countByDate">
+        SELECT
+        COUNT(*)
+        FROM SUPPORT SU
+        INNER JOIN SHELTER SH on SH.SHELTER_NO = SU.SHELTER_NO
+        WHERE STATUS = 'DONE'
+        AND SU.MEMBER_NO = ?
+        AND SU.PAY_TIME BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD')
+        ORDER BY PAY_TIME DESC
+    </entry>
+
+    <entry key="countByFilter">
+        SELECT
+        COUNT(*)
+        FROM SUPPORT SU
+        INNER JOIN SHELTER SH on SH.SHELTER_NO = SU.SHELTER_NO
+        AND SHELTER_NAME like '%'||?||'%'
+        ORDER BY PAY_TIME DESC
+    </entry>
+
+    <entry key="selectAllByShelterNo">
+        SELECT * FROM SUPPORT SU
+        INNER JOIN MEMBER MEM ON SU.MEMBER_NO = MEM.MEMBER_NO
+        WHERE STATUS = 'DONE'
+        AND SU.SHELTER_NO = ?
+        AND SU.WD_STATUS not in 'BLOCK'
+        ORDER BY PAY_TIME DESC
+    </entry>
+
+</properties>
+

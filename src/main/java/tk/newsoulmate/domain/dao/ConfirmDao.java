@@ -1,8 +1,6 @@
 package tk.newsoulmate.domain.dao;
 
 
-import tk.newsoulmate.web.common.JDBCTemplet;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;

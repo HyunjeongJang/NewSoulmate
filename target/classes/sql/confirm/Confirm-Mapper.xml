@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="selectConfirmNo">
+        SELECT SQ_CONFIRM_PK.NEXTVAL
+        FROM DUAL
+    </entry>
+    <entry key="insertConfirm">
+        INSERT INTO CONFIRM(CONFIRM_NO,CONFIRM_TIME,CONFIRM_CODE) VALUES (?,SYSDATE,?)
+    </entry>
+    <entry key="compareConfirm">
+        SELECT
+        CASE WHEN ROUND((SYSDATE-CONFIRM_TIME) * 24 * 60,2)&lt;3 THEN '1' ELSE '-1' END AS "result"
+        FROM CONFIRM
+        WHERE CONFIRM_NO = ? AND CONFIRM_CODE = ?
+    </entry>
+
+</properties>

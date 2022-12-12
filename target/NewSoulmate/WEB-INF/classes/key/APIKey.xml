@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<!--API키는 이파일에서 관리할것!-->
+<properties>
+    <entry key="NoticeKey">OhUlln8q1KPlVbRKb81vjzEzQ%2FvN4L5FIwTc%2F5vIB3ViAeVOooZ0oG8VTmLM59sKxVKygpFeT1YTu4azfMRyCw%3D%3D</entry>
+    <entry key="KakaoMapKey">25a11b9a945a1d444011113fe431e818</entry>
+    <entry key="ImportApiKey">5125134043525072</entry>
+    <entry key="ImportSecretKey">8XJp5Mj3RrDqiwfzxU1UOqCI2CBfy4tT4AdnXdYZrDHkUNHJaDZkrpOU80sbKcjGYeW0y6euJNqfyWxA</entry>
+    <entry key="SolapiKey">NCSBA6VPUHBPRQXT</entry>
+    <entry key="SolapiSecretKey">PDUBUKMKPENKU0B9KL0EGAM4KANHXWTN</entry>
+    <entry key="emailId">newsoulmatemaster</entry>
+    <entry key="emailPwd">ejcptolhwgpmvytc</entry>
+    <entry key="telNum">01033886526</entry>
+</properties>

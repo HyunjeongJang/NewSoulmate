@@ -30,7 +30,7 @@
 
 <br>
 <details>
-<summary>디랙토리 구조</summary>
+<summary>디렉토리 구조</summary>
 <div markdown="1">
 
   ```

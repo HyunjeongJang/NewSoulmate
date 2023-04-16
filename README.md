@@ -59,7 +59,25 @@ file #첨부파일 저장용폴더 ($tomcathome/webapps/file)
 </details>
 <br/>
 
-# 4. 문서
+
+# 4.  담당한 기능
+
+- **회원**
+    - 회원가입 / 회원탈퇴 / 로그인 / 로그아웃
+    - 아이디 / 비밀번호 찾기 / 비밀번호 재설정
+    - google 이메일 인증
+- **후원**
+    - 후원하기, 아임포트 결제연동
+    - 개인 후원내역 , 후원 출금신청
+- **사이트관리자**
+    - 회원관리 회원리스트
+    - 전체 후원내역
+    - 보호소별 출금승인
+    - 보호소 정보수정
+
+
+
+# 5. 문서
 
 ### 기획보고서
   https://drive.google.com/file/d/1L6zZkbqxW-iPZNCHpkdetDZk2rc9NBJs/view?usp=share_link

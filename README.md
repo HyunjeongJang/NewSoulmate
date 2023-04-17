@@ -60,7 +60,7 @@ file #첨부파일 저장용폴더 ($tomcathome/webapps/file)
 <br/>
 
 
-# 4.  담당한 기능
+# 4.  담당 기능
 
 - **회원**
     - 회원가입 / 회원탈퇴 / 로그인 / 로그아웃
@@ -83,8 +83,6 @@ file #첨부파일 저장용폴더 ($tomcathome/webapps/file)
   https://drive.google.com/file/d/1L6zZkbqxW-iPZNCHpkdetDZk2rc9NBJs/view?usp=share_link
 ### ERD다이어그램
   https://www.erdcloud.com/d/KswtGB5amNor7KgTn
-### 데이터베이스기술서
-  https://docs.google.com/spreadsheets/d/1J3zE1rpJmOWnnTh2TjGaZumdDqmRdL-S/edit?usp=share_link&ouid=114521314021540923644&rtpof=true&sd=true
 ### UI설계
   https://drive.google.com/file/d/18kj2KG9glaGqy_R7XCG7SbCxSkAlR_o4/view?usp=share_link
 ### 최종보고서

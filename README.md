@@ -85,7 +85,7 @@ file #첨부파일 저장용폴더 ($tomcathome/webapps/file)
 |                              메인페이지                               |                              유기동물  목록                               |                                상세조회                                 |
 |:----------------------------------------------------------------:|:-------------------------------------------------------------------:|:-------------------------------------------------------------------:|
 |                              메인페이지                               |                          유기동물 지역별 조회->상세조회                          |                           유기동물 상세조회,사진댓글                            |
-| <img src="readme/gif/main.gif" alt="회원관리" style="width:100%;" /> | <img src="readme/gif/noticeSearch.gif" alt="" style="width:90%;" /> | <img src="readme/gif/noticeDetail.gif" alt="" style="width:90%;" /> |
+| <img src="https://github.com/YEOMCODING/NewSoulmate/raw/main/readme/gif/main.gif" alt="회원관리" style="width:100%;" /> | <img src="https://github.com/YEOMCODING/NewSoulmate/raw/main/readme/gif/noticeSearch.gif" alt="" style="width:90%;" /> | <img src="https://github.com/YEOMCODING/NewSoulmate/raw/main/readme/gif/noticeDetail.gif" alt="" style="width:90%;" /> |
 
 <details>
 <summary>자세히</summary>
@@ -111,7 +111,7 @@ file #첨부파일 저장용폴더 ($tomcathome/webapps/file)
 |                             유기동물 입양신청                             |                               보호소 봉사신청                                |                                 신청 수락                                 |
 |:-----------------------------------------------------------------:|:---------------------------------------------------------------------:|:---------------------------------------------------------------------:|
 |                         유기동물 공고를 통한 입양신청                          |                             등록된 보호소별 봉사신청                             |                        (등록된 보호소관계자)신청자에게 문자보내기                        |
-| <img src="readme/gif/adopt.gif" alt="회원관리" style="width:100%;" /> | <img src="readme/gif/volunteerApply.gif" alt="" style="width:90%;" /> | <img src="readme/gif/volunteerAgree.gif" alt="" style="width:90%;" /> |
+| <img src="https://github.com/YEOMCODING/NewSoulmate/raw/main/readme/gif/adopt.gif" alt="회원관리" style="width:100%;" /> | <img src="https://github.com/YEOMCODING/NewSoulmate/raw/main/readme/gif/volunteerApply.gif" alt="" style="width:90%;" /> | <img src="https://github.com/YEOMCODING/NewSoulmate/raw/main/readme/gif/volunteerAgree.gif" alt="" style="width:90%;" /> |
 
 <details>
 <summary>자세히</summary>
@@ -136,7 +136,7 @@ file #첨부파일 저장용폴더 ($tomcathome/webapps/file)
 
 |                                후기게시판 목록                                |                               후기 작성                                |                               후기 상세보기                               |
 |:----------------------------------------------------------------------:|:------------------------------------------------------------------:|:-------------------------------------------------------------------:|
-| <img src="readme/gif/reviewList.gif" alt="회원관리" style="width:100%;" /> | <img src="readme/gif/naverEditer.gif" alt="" style="width:90%;" /> | <img src="readme/gif/reviewDetail.gif" alt="" style="width:90%;" /> |
+| <img src="https://github.com/YEOMCODING/NewSoulmate/raw/main/readme/gif/reviewList.gif" alt="회원관리" style="width:100%;" /> | <img src="https://github.com/YEOMCODING/NewSoulmate/raw/main/readme/gif/naverEditer.gif" alt="" style="width:90%;" /> | <img src="https://github.com/YEOMCODING/NewSoulmate/raw/main/readme/gif/reviewDetail.gif" alt="" style="width:90%;" /> |
 
 <details>
 <summary>자세히</summary>
